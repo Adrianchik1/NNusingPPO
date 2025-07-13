@@ -21,10 +21,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="adriamvhik.py" />
-    <Compile Include="adrianchik2.py" />
-    <Compile Include="log.py" />
+    <Compile Include="iterate.py" />
+    <Compile Include="logicManager.py" />
+    <Compile Include="weightsBiases.py" />
+    <Compile Include="activations.py" />
+    <Compile Include="losses.py" />
     <Compile Include="PythonApplication1.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="results.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
