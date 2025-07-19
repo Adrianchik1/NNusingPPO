@@ -16,10 +16,10 @@ progressOfLosses = []       #an array to store all losses(for future analysis)
 differenceOfLosses = []
 implementBiases = False
 
-dense1 = Layer_Dense(2, 3)
+dense1 = Layer_Dense(2, 10)
 activation1 = Activation_ReLU()
 
-dense2 = Layer_Dense(3, 3)
+dense2 = Layer_Dense(10, 3)
 activation2 = Activatioin_Softmax()
 
 X, y = spiral_data(samples=100, classes=3)
