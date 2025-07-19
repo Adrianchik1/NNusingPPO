@@ -6,6 +6,7 @@ from activations import Activation_ReLU, Activatioin_Softmax
 from weightsBiases import Layer_Dense
 from iterate import iteration
 from logicManager import Optimiser
+from charts import makeChart
 
 nnfs.init()
 iterations = 0
@@ -26,7 +27,7 @@ X, y = spiral_data(samples=100, classes=3)
 
 optimiser = Optimiser(X, y, activation1, activation2, change)
 
-for i in range(0, 1000):
+for i in range(0, 200):
     print(f"Iteration {iterations}")
     loss = iteration(X, y, dense1, dense2, activation1, activation2)
     loss, dense1, dense2 = optimiser.optimise(loss, dense1, dense2)
@@ -41,7 +42,7 @@ for i in range(0, 1000):
         #implementBiases = True
         progress = iterations - 10
         break
-    if len(losses)>2 and i%10 == 0:
+    if len(losses)>2:
         differenceOfLosses.append(losses[0] - losses[1])  # appends the change in loss to the progressOfLosses array)
         progressOfLosses.append(loss)
     # if len(losses)>2 and losses[0] - losses[-1] < 0.001:
@@ -54,6 +55,6 @@ for i in range(0, 1000):
 
 print(loss)
 print(iterations)
-print(differenceOfLosses, "/n")
-print(progressOfLosses)
+makeChart(progressOfLosses)
+makeChart(differenceOfLosses)
 input("Press enter to exit")
