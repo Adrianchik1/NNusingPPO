@@ -1,8 +1,7 @@
-from re import A
-from xml.sax.handler import all_properties
 import numpy as np
 import copy
 from iterate import iteration
+from totalAmountOfWeights import totalAmountOfWeights
 
 class Optimiser():
     def __init__(self, X, y, activation1, activation2, change):
@@ -45,10 +44,11 @@ class Optimiser():
                   (negativeLoss, negativeDense1, negativeDense2),
                   (loss, dense1, dense2)] 
         return min(losses, key=lambda x: x[0]) 
-
      
-    def optimise(self, loss, dense1, dense2): 
-        for nthElem in range(sum(len(inner) for outer in [copy.deepcopy(dense1.weights), copy.deepcopy(dense2.weights)] for inner in outer)):
+     
+    def optimise(self, loss, denses): 
+        dense1, dense2 = denses[0], denses[1]
+        for nthElem in range(totalAmountOfWeights(denses, "weights")):
             positiveDense1, positiveDense2 = copy.deepcopy(dense1), copy.deepcopy(dense2)
             negativeDense1, negativeDense2 = copy.deepcopy(dense1), copy.deepcopy(dense2)
 

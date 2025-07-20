@@ -24,6 +24,7 @@
     <Compile Include="charts.py" />
     <Compile Include="iterate.py" />
     <Compile Include="logicManager.py" />
+    <Compile Include="totalAmountOfWeights.py" />
     <Compile Include="weightsBiases.py" />
     <Compile Include="activations.py" />
     <Compile Include="losses.py" />
