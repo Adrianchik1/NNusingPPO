@@ -25,13 +25,15 @@ activation2 = Activatioin_Softmax()
 
 X, y = spiral_data(samples=100, classes=3)
 
-optimiser = Optimiser(X, y, activation1, activation2, change)
+denses = [dense1, dense2]
+activations = [activation1, activation2]
+
+optimiser = Optimiser(X, y, activations, change)
 
 for i in range(0, iterations):
     print(f"Iteration {i}")
-    loss = iteration(X, y, dense1, dense2, activation1, activation2)
-    denses = [dense1, dense2]
-    loss, dense1, dense2 = optimiser.optimise(loss, denses)
+    loss = iteration(X, y, denses, activations)
+    loss, denses = optimiser.optimise(loss, denses)
     print(f"Loss {loss}")
 
     if len(losses) > 13: losses.pop(0)                                      # removes the oldest loss if it has more than 10 elements
@@ -40,9 +42,6 @@ for i in range(0, iterations):
     if len(losses)>2:
         differenceOfLosses.append(losses[0] - losses[1])  # appends the change in loss to the progressOfLosses array)
         progressOfLosses.append(loss)
-
-
-    
 
 
 print(loss)
