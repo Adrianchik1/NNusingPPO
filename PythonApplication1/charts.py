@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
 def makeChart(float_list):
-    # Ensure y is a numpy array of floats
     x = np.arange(len(float_list))
     y = np.array(float_list, dtype=float)
 

@@ -8,6 +8,7 @@ class Layer_Dense:
     totalAmountOfWeights = 0
     totalAmountOfBiases = 0
     whichDense = None
+
     def __init__(self, n_inputs, n_neurons):
         self.weights = 0.10 *  np.random.randn(n_inputs, n_neurons )
         self.biases = np.zeros((1, n_neurons))
@@ -17,6 +18,7 @@ class Layer_Dense:
         Layer_Dense.totalAmountOfBiases += len(self.weights) * len(self.weights[0])
 
         Layer_Dense.LayerDenseInstances.append(self)
+
     def forward(self, inputs):
         self.output = np.dot(inputs, self.weights) + self.biases 
 
@@ -29,8 +31,8 @@ class Layer_Dense:
             else:
                 row, col = np.unravel_index(whichWeight, dense.weights.shape)
                 dense.weights[row, col] += change
-                #whichDense = cls.LayerDenseInstances.index(dense)
                 return densesCopy
+
     @classmethod
     def ChangeBias(cls, denses, whichBias, change): 
         densesCopy = copy.deepcopy(denses)
