@@ -1,8 +1,6 @@
 import numpy as np
 import nnfs
 from nnfs.datasets import spiral_data
-import matplotlib
-
 
 from activations import Activation_ReLU, Activatioin_Softmax
 from weightsBiases import Layer_Dense
@@ -16,7 +14,6 @@ iterations = 100            #amount of iterations, how much times it would run t
 change = 0.05               #amount by which weights and biases should change each iteration
 losses = []                 #array to store the last 10 losses
 differenceOfLosses = []     #array to store the differences of the last two losses(for future analysis)
-implementBiases = False
 
 dense1 = Layer_Dense(2, 10)         #weights and biases in the first layer
 activation1 = Activation_ReLU()     #an activation class, that would multiply weights by inputs and would add biases
@@ -39,7 +36,7 @@ for i in range(0, iterations):          #cycle which will optimize NN the requir
     loss, denses = optimiser.optimise(loss, denses)     #optimising denses
     print(f"Loss {loss}")
 
-    losses.append(loss)                                                                     # appending the loss to the losses array
+    losses.append(loss)                                                                     # adding the loss to the losses array
     lastTenLosses = np.array(losses[-10:])                                                  # getting the last 10 losses
     if np.allclose(lastTenLosses, lastTenLosses[0]) == True and len(losses) > 11:           # if loss hasnt changed in the last 10 iterations breaks
         break
@@ -51,7 +48,4 @@ print(loss)
 print(iterations)
 makeChart(losses)
 makeChart(differenceOfLosses)
-
-print("NumPy version:", np.__version__)
-print("Matplotlib version:", matplotlib.__version__)
 input("Press enter to exit")
