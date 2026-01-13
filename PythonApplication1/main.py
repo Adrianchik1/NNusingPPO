@@ -1,6 +1,8 @@
 import numpy as np
 import nnfs
 from nnfs.datasets import spiral_data
+import matplotlib
+
 
 from activations import Activation_ReLU, Activatioin_Softmax
 from weightsBiases import Layer_Dense
@@ -49,4 +51,7 @@ print(loss)
 print(iterations)
 makeChart(losses)
 makeChart(differenceOfLosses)
+
+print("NumPy version:", np.__version__)
+print("Matplotlib version:", matplotlib.__version__)
 input("Press enter to exit")
